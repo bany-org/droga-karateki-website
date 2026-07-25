@@ -7,12 +7,11 @@ export default async function Home() {
   const response = await fetch(url);
   const text = await response.json();
   
+  console.log('text:', text);
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-      <p>URL: {url}</p>
-      <pre>{JSON.stringify(text, null, 2)}</pre>
-
         <Image
           className="dark:invert"
           src="/next.svg"
