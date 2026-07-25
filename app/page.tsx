@@ -2,17 +2,20 @@ import Image from "next/image";
 
 export default async function Home() {
 
-let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/hello`)
-let data = await response.json()
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/hello`;
+
+  console.log(url);
+  
+  const response = await fetch(url);
+  const text = await response.text();
+  
+  console.log(text);
   
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-      <p>Message: {data.message}</p>
-      <p>Port: {data.port}</p>
-      <p>Host: {data.host}</p>
-      <p>Node Env: {process.env.NODE_ENV}</p>
-      <p>Test: {data.test}</p>
+      <p>URL: {url}</p>
+      <pre>{text}</pre>
         <Image
           className="dark:invert"
           src="/next.svg"
