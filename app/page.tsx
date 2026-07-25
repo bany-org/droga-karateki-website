@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default async function Home() {
 
-let response = await fetch(`${process.env.API_HOST}/api/v1/hello`)
+let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/hello`)
 let data = await response.json()
   
   return (
