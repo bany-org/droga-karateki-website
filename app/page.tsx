@@ -3,14 +3,25 @@ import Image from "next/image";
 export default async function Home() {
 
   const url = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/airtable`;
-  
+
+  const url2 = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/hello`;
+  const response2 = await fetch(url2);
+  const text2 = await response2.json();
+  console.log('text2:', text2);
+
   const response = await fetch(url);
   const text = await response.json();
-  
   console.log('text:', text);
+
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <p>Hello API: {url2}</p>
+      <pre>{JSON.stringify(text2, null, 2)}</pre>
+
+      <p>URL: {url}</p>
+      <pre>{JSON.stringify(text, null, 2)}</pre>
+
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <Image
           className="dark:invert"
